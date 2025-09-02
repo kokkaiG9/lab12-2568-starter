@@ -1,8 +1,8 @@
 # Lab12 : Todo List with Mantine (Part 1)
 
-ชื่อ-สกุล :
+ชื่อ-สกุล :ธีรภัทร ศรีมาลา
 
-รหัสนักศึกษา :
+รหัสนักศึกษา :670610709
 
 ---
 
@@ -53,7 +53,7 @@ Explore pre-built UI layouts and components from Mantine:
 Install:
 
 ```
-pnpm install @tabler/icons-react
+pnpm install @mantine/core @mantine/hooks
 
 ```
 

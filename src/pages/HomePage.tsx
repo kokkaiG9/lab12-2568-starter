@@ -20,6 +20,7 @@ interface Task {
   description: string;
   isDone: boolean;
   dueDate: Date | null;
+  doneDate: Date | null;
 }
 
 export default function HomePage() {
@@ -30,6 +31,7 @@ export default function HomePage() {
       description: "Vite + React + Mantine + TS",
       isDone: false,
       dueDate: new Date(),
+      doneDate: new Date()
     },
     {
       id: "2",
@@ -37,6 +39,7 @@ export default function HomePage() {
       description: "Finish project for class",
       isDone: false,
       dueDate: new Date(),
+      doneDate: new Date(),
     },
     {
       id: "3",
@@ -44,6 +47,7 @@ export default function HomePage() {
       description: "Push project to GitHub Pages",
       isDone: false,
       dueDate: new Date(),
+      doneDate: new Date(),
     },
   ]);
   const lorem = new LoremIpsum({
@@ -64,6 +68,7 @@ export default function HomePage() {
       description: lorem.generateWords(10),
       isDone: false,
       dueDate: new Date(),
+      doneDate: new Date()
     };
     setTasks((prev) => [...prev, newTask]);
   };
@@ -112,13 +117,15 @@ export default function HomePage() {
                     </Text>
                   )}
                   {/* แสดง Date & Time */}
-                  <Text size="xs" c="gray">
-                    Done at:
+                  {task.doneDate && task.isDone &&(
+                  <Text size="xs" c="theerapat">
+                    Done at: {task.doneDate.toLocaleString()}
                   </Text>
+                  )}
                 </Stack>
                 {/* แสดง Button Done & Button Delete */}
                 <Group>
-                  <Button
+                  {/* <Button
                     style={{
                       backgroundColor: "#71c32fda",
                       color: "#dce6e7ff",
@@ -128,15 +135,33 @@ export default function HomePage() {
                     onClick={() => toggleDoneTask(task.id)}
                   >
                     Done
-                  </Button>
-                  <Button
+                  </Button> */}
+
+                  <Checkbox
+                    /*defaultChecked*/
+                    checked={task.isDone}
+                    label="Done"
+                    color="green"
+                    radius="sm"
+                    size="sm"
+                    onClick={() => toggleDoneTask(task.id)}
+                  /> 
+
+                  {/* <Button
                     color="chanadda"
                     variant="light"
                     size="xs"
                     onClick={() => deleteTask(task.id)}
                   >
                     Delete
-                  </Button>
+                  </Button> */}
+
+                  <ActionIcon variant="light" color="red" aria-label="Settings" size="lg">
+                    <IconTrash 
+                      stroke={2}
+                      onClick={() => deleteTask(task.id)}
+                    />
+                    </ActionIcon>
                 </Group>
               </Group>
             </Card>
